@@ -6,8 +6,6 @@ import { useLogout } from "hooks/auth";
 export default function Navbar() {
   const { logout, isLoading } = useLogout();
 
-
-
   return (
     <Flex
       shadow="sm"

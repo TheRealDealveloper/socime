@@ -1,3 +1,7 @@
+# IMPORTANT
+Name of Project is "..."
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -75,3 +79,5 @@ yarn add react-router-dom
 yarn add firebase
 yarn add react-firebase-hooks
 yarn add react-hook-form
+yarn add react-textarea-autosize
+yarn add date-fns
