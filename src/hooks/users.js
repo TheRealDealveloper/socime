@@ -11,7 +11,8 @@ import { useNavigate } from "react-router-dom";
 
 export function useUser(id) {
   const q = query(doc(db, "users", id));
-  const [user, isLoading] = useDocumentData(q);
+  const [user, isLoading, error] = useDocumentData(q);
+  if(error) throw error;
   return { user, isLoading };
 }
 

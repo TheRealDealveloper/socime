@@ -2,6 +2,7 @@ import Login from "components/auth/Login";
 import Register from "components/auth/Register";
 import Comments from "components/comments";
 import Dashboard from "components/dashboard";
+import LandingPage from "components/landingpage";
 import Layout from "components/layout";
 import Profile from "components/profile";
 import AllUsers from "components/profile/AllUsers";
@@ -18,7 +19,7 @@ export const PROFILE = "/protected/profile/:id";
 export const COMMENTS = "/protected/comments/:id";
 
 export const router = createBrowserRouter ([
-    {path: ROOT, element: "Public Root"},
+    {path: ROOT, element: <LandingPage/>},
     {path: LOGIN, element: <Login/>},
     {path: REGISTER, element: <Register/>},
     {
