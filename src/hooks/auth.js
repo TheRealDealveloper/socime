@@ -43,7 +43,6 @@ export function useLogin() {
     setLoading(true);
 
     try {
-      console.log("before login"+email)
       await signInWithEmailAndPassword(auth, email, password);
       toast({
         title: "You are logged in",
@@ -104,6 +103,7 @@ export function useRegister() {
           username: username.toLowerCase(),
           avatar: "",
           date: Date.now(),
+          friends: [],
         });
 
         toast({

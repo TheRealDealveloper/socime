@@ -1,5 +1,5 @@
 import { useToast } from "@chakra-ui/react";
-import { collection, doc, query, updateDoc } from "firebase/firestore";
+import { collection, doc, orderBy, query, updateDoc, where } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { db, storage } from "lib/firebase";
 import { useState } from "react";
@@ -70,3 +70,34 @@ export function useUpdateAvatar(uid) {
     fileURL: file && URL.createObjectURL(file),
   };
 }
+
+export function useFriends(id) {
+  // const q = query(doc(db, "users", id));
+  // const [user, isLoading, error] = useDocumentData(q);
+  // if(error) throw error;
+  // const friends = user?.friends;
+  // friends?.forEach((element, index, arr) => {
+  //   function Query(id) {
+  //     let q1 = query(doc(db, "users", id));
+  //     let [user] = useDocumentData(q1);
+  //     return user;
+  //   }
+
+  //   let friend = Query(element);
+  //   arr[index]=  friend;
+  // });
+  // console.log("friends: " + friends);
+
+
+
+  // bad performance...
+  const q = query(
+    collection(db, "users"),
+    orderBy("username", "desc"),
+    where("friends", "array-contains", id));
+  const [friends, isLoading, error] = useCollectionData(q);
+  if (error) throw error;
+  console.log(friends);
+  return { friends, isLoading };
+}
+

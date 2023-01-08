@@ -26,6 +26,9 @@ function ActiveUser() {
 }
 
 export default function Sidebar() {
+  const { user, isLoading } = useAuth();
+  if (isLoading) return "Loading...";
+
   return (
     <Box
       px="6"
@@ -44,12 +47,12 @@ export default function Sidebar() {
         <Button
           variant="outline"
           colorScheme="teal"
-          as={Link}
-          to={USERS}
+          as={Link}        
+          to={`${PROTECTED}/friends/${user.id}`}
           mt="4"
           size="sm"
         >
-          ALL USERS
+          Friends
         </Button>
       </Box>
     </Box>
