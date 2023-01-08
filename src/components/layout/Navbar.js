@@ -1,10 +1,11 @@
 import { Button, Flex, Link } from "@chakra-ui/react";
-import { DASHBOARD } from "lib/routes";
+import { DASHBOARD, LANDINGPAGE, LOGIN } from "lib/routes";
 import { Link as RouterLink } from "react-router-dom";
-import { useLogout } from "hooks/auth";
+import { useAuth, useLogout } from "hooks/auth";
 
 export default function Navbar() {
   const { logout, isLoading } = useLogout();
+  const { user } = useAuth();
 
   return (
     <Flex
@@ -18,7 +19,7 @@ export default function Navbar() {
       justify="center"
       bg="white"
     >
-      <Flex px="4" w="full" align="center" maxW="1200px">
+      { user ? (<Flex px="4" w="full" align="center" maxW="1200px">
         <Link color="teal" as={RouterLink} to={DASHBOARD} fontWeight="bold">
           Home
         </Link>
@@ -31,7 +32,23 @@ export default function Navbar() {
         >
           Logout
         </Button>
-      </Flex>
+      </Flex>) : (<Flex px="4" w="full" align="center" maxW="1200px">
+        <Link color="teal" as={RouterLink} to={LANDINGPAGE} fontWeight="bold">
+          Landing Page
+        </Link>
+        <Button
+          as={RouterLink}
+          to={LOGIN}
+          ml="auto"
+          colorScheme="teal"
+          size="sm"
+          isLoading={isLoading}
+        >
+          Login
+        </Button>
+      </Flex>) }
+
+      
     </Flex>
   );
 }
