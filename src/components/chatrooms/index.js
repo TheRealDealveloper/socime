@@ -1,16 +1,45 @@
-import { Box  } from "@chakra-ui/react";
+import { Box, Button, useToast  } from "@chakra-ui/react";
 import { GetChatrooms } from "hooks/chatrooms"
 import ChatroomList from "./ChatroomList";
+import { uuidv4 } from "@firebase/util";
+import { useState } from "react";
+import { doc, setDoc } from "firebase/firestore";
+import { db } from "lib/firebase";
 
 export default function Chatrooms() {
-    const { chatrooms, isLoading } = GetChatrooms();
+    const { chatrooms, isLoading : roomsIsLoading } = GetChatrooms();
+    const [isLoading, setLoading] = useState(false);
+    const toast = useToast();
 
-    if (isLoading) return "Loading...";
-    else{
-        console.log(chatrooms);
+    if (roomsIsLoading) return "Loading...";
+
+    async function addChatroom() {
+        setLoading(true);
+        const id = uuidv4();
+        await setDoc(doc(db, "chatrooms", id), {
+            id,
+            date: Date.now(),
+            userids: [],
+        });
+        toast({
+            title: "Chatroom created successfully!",
+            status: "success",
+            isClosable: true,
+            position: "top",
+            duration: 5000,
+        });
+        setLoading(false);
     }
+
     return (
         <Box align="center" pt="50">
+            <Button
+                onClick={addChatroom}
+                ml="auto"
+                colorScheme="teal"
+                size="sm"
+                isLoading={isLoading}
+            >Add Chatroom</Button>
             <ChatroomList chatrooms={chatrooms} />
         </Box>
   );
