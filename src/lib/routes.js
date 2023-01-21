@@ -1,10 +1,10 @@
 import About from "components/about";
 import Login from "components/auth/Login";
 import Register from "components/auth/Register";
+import Chatrooms from "components/chatrooms";
 import Comments from "components/comments";
 import Dashboard from "components/dashboard";
 import LandingPage from "components/landingpage";
-import HomeLayout from "components/landingpage";
 import Layout from "components/layout/Layout";
 import MainLayout from "components/layout/MainLayout";
 import Profile from "components/profile";
@@ -20,6 +20,7 @@ export const REGISTER = "/register";
 
 export const PROTECTED = "/protected";
 export const DASHBOARD = "/protected/dashboard";
+export const CHATROOMS = "/protected/chatrooms";
 export const USERS = "/protected/users";
 
 export const FRIENDS = "/protected/friends/:id";
@@ -42,6 +43,10 @@ export const router = createBrowserRouter ([
             {
                 path: DASHBOARD, 
                 element: <Dashboard/>
+            },
+            {
+                path: CHATROOMS, 
+                element: <Chatrooms/>
             },
             {
                 path: FRIENDS,

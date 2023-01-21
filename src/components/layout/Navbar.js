@@ -1,5 +1,5 @@
 import { Button, Flex, Link } from "@chakra-ui/react";
-import { DASHBOARD, LANDINGPAGE, LOGIN } from "lib/routes";
+import { CHATROOMS, DASHBOARD, LANDINGPAGE, LOGIN } from "lib/routes";
 import { Link as RouterLink } from "react-router-dom";
 import { useAuth, useLogout } from "hooks/auth";
 
@@ -22,6 +22,9 @@ export default function Navbar() {
       { user ? (<Flex px="4" w="full" align="center" maxW="1200px">
         <Link color="teal" as={RouterLink} to={DASHBOARD} fontWeight="bold">
           Home
+        </Link>
+        <Link color="teal" as={RouterLink} to={CHATROOMS} fontWeight="bold">
+          <span> Chat</span>
         </Link>
         <Button
           ml="auto"
