@@ -5,10 +5,14 @@ import { uuidv4 } from "@firebase/util";
 import { useState } from "react";
 import { doc, setDoc } from "firebase/firestore";
 import { db } from "lib/firebase";
+import { useAuth } from "hooks/auth";
 
 export default function Chatrooms() {
     const { chatrooms, isLoading : roomsIsLoading } = GetChatrooms();
     const [isLoading, setLoading] = useState(false);
+    
+    const { user: authUser } = useAuth();
+
     const toast = useToast();
 
     if (roomsIsLoading) return "Loading...";
@@ -19,7 +23,8 @@ export default function Chatrooms() {
         await setDoc(doc(db, "chatrooms", id), {
             id,
             date: Date.now(),
-            userids: [],
+            userids: [authUser.id],
+            uid: authUser.id,
         });
         toast({
             title: "Chatroom created successfully!",

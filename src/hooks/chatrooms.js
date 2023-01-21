@@ -8,6 +8,7 @@ import { useCollectionData } from "react-firebase-hooks/firestore";
 export function GetChatrooms(){
     const [chatrooms, isLoading, error] = useCollectionData(collection(db, "chatrooms"));
     const toast = useToast();
+
     if(error){
         toast({
             title: "Error",

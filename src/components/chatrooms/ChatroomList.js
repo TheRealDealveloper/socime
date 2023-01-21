@@ -9,7 +9,7 @@ export default function ChatroomList({chatrooms}) {
                 No rooms... Feeling a little lonely here.
                 </Text>
             ) : (
-                chatrooms?.map((chatroom) => <ChatroomEntry key={chatroom.id} post={chatroom} />)
+                chatrooms?.map((chatroom) => <ChatroomEntry key={chatroom.id} chatroom={chatroom} />)
             )}
         </div>
     )

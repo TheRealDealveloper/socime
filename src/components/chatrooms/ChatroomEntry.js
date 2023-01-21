@@ -1,9 +1,10 @@
+import { useUser } from 'hooks/users'
 import React from 'react'
 
-function ChatroomEntry({chatroom}) {
+export default function ChatroomEntry({chatroom}) {
+    const { user, isLoading } = useUser(chatroom.uid);
+  if (isLoading) return "Loading...";
   return (
-    <div>Hello</div>
+    <div>created by {user.username}</div>
   )
 }
-
-export default ChatroomEntry
