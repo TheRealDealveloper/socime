@@ -1,0 +1,8 @@
+.page_body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.page_body > *:last-child{
+    flex-grow: 1;
+}

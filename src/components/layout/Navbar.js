@@ -1,5 +1,5 @@
 import { Button, Flex, Link } from "@chakra-ui/react";
-import { CHATROOMS, DASHBOARD, LANDINGPAGE, LOGIN } from "lib/routes";
+import { ABOUT, CHATROOMS, DASHBOARD, IMPRESSUM, LANDINGPAGE, LOGIN } from "lib/routes";
 import { Link as RouterLink } from "react-router-dom";
 import { useAuth, useLogout } from "hooks/auth";
 
@@ -35,10 +35,23 @@ export default function Navbar() {
         >
           Logout
         </Button>
-      </Flex>) : (<Flex px="4" w="full" align="center" maxW="1200px">
-        <Link color="teal" as={RouterLink} to={LANDINGPAGE} fontWeight="bold">
+      </Flex>) : (
+      <Flex px="4" w="full" align="center" maxW="1200px">
+        
+        
+        <Link mx="2" color="teal" as={RouterLink} to={LANDINGPAGE} fontWeight="bold">
           Landing Page
         </Link>
+        <Link mx="2" color="teal" as={RouterLink} to={ABOUT} fontWeight="bold">
+          About
+        </Link>
+        <Link mx="2" color="teal" as={RouterLink} to={IMPRESSUM} fontWeight="bold">
+          Impressum
+        </Link>
+        <Link mx="2" color="teal" as={RouterLink} to={IMPRESSUM} fontWeight="bold">
+          My Projects
+        </Link>
+
         <Button
           as={RouterLink}
           to={LOGIN}

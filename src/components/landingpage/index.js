@@ -1,13 +1,13 @@
-import { Link, Box } from "@chakra-ui/react";
-import { LOGIN } from "lib/routes";
-import { Link as RouterLink } from "react-router-dom"
+import MyIntro from "components/myintro";
+import classes from './index.module.css'
 
 export default function LandingPage() {
   return (
     <>
-      <Box>
-
-      </Box>
+      <MyIntro/>
+      <div>
+        <img className={classes.mypic} src="/me.png" alt="where is my pic?"/>
+      </div>
     </>
   )
 }

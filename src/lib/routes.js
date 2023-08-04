@@ -4,9 +4,11 @@ import Register from "components/auth/Register";
 import Chatrooms from "components/chatrooms";
 import Comments from "components/comments";
 import Dashboard from "components/dashboard";
+import Impressum from "components/impressum";
 import LandingPage from "components/landingpage";
 import Layout from "components/layout/Layout";
 import MainLayout from "components/layout/MainLayout";
+import MyProjects from "components/myprojects";
 import Profile from "components/profile";
 import Friends from "components/profile/Friends";
 import { createBrowserRouter } from "react-router-dom";
@@ -15,6 +17,7 @@ export const ROOT = "/";
 export const LANDINGPAGE = "/landingpage";
 export const ABOUT = "/about";
 export const IMPRESSUM = "/impressum";
+export const MYPROJECTS = "/myprojects";
 export const LOGIN = "/login";
 export const REGISTER = "/register";
 
@@ -32,7 +35,8 @@ export const router = createBrowserRouter ([
     {path: ROOT, element: <MainLayout/>, children: [
         {path: LANDINGPAGE, element: <LandingPage/>},
         {path: ABOUT, element: <About/>},
-        {path: IMPRESSUM, element: <IMPRESSUM/>},
+        {path: IMPRESSUM, element: <Impressum/>},
+        {path: MYPROJECTS, element: <MyProjects/>},
         {path: LOGIN, element: <Login/>},
         {path: REGISTER, element: <Register/>},
     ]},
